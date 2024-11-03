@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'main3.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+
+<header>
+    <div class="a111">
+        <h1>Welcome to Your Detail</h1> <br>
+        <a style="width: 50px; height: 30px; margin-top: 50px;" href="{% url 'list_p' %}">Menu</a>
+        <a style="width: 50px; height: 30px; margin-top: 50px;" href="{% url 'delete_p' object.id %}">Delete</a>
+        <a style="width: 50px; height: 30px; margin-top: 50px;" href="{% url 'update_p' object.id %}">Update</a>
+    </div>
+</header>
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h3>Name: {{ object.cord }}</h3>
+        <h3>Time: {{ object.time }}</h3>
+        <h3>Description: {{ object.description }}</h3>
+        <h3>Genre: {{ object.price }}</h3>
+    </div>
+</div>
+{% endblock content %}
+
+</body>
+</html>

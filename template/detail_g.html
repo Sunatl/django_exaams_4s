@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'main33.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+
+<header>
+    <div class="a111">
+        <h1>Welcome to Your Detail</h1> <br>
+        <a style="width: 50px; height: 30px; margin-top: 50px;" href="{% url 'list_g' %}">Menu</a>
+        <a style="width: 50px; height: 30px; margin-top: 50px;" href="{% url 'delete_g' object.id %}">Delete</a>
+        <a style="width: 50px; height: 30px; margin-top: 50px;" href="{% url 'update_g' object.id %}">Update</a>
+    </div>
+</header>
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h3>Name: {{ object.name }}</h3>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="card">
+        {% for m in answer %}
+        <h3>Name: {{ m.name }}</h3>
+        <h3>Time: {{ m.location }}</h3>
+        <h3>Description: {{ m.genres }}</h3>
+        {% endfor %}   
+     </div>
+</div>
+{% endblock content %}
+
+</body>
+</html>

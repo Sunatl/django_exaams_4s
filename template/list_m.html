@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'main1.css' %}">
+</head>
+<body>
+
+    <div class="a1">
+        <h1>Movie</h1>
+        <div class="base">
+            <a href="{% url 'base' %}"><h3 class="sas">Home</h3></a>
+            <a href="{% url 'create_m' %}"><h3 class="sas">Add</h3></a>
+        </div>
+    </div>
+
+    <div class="b1">
+        <table>
+            <caption><h3>Movie</h3></caption>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Description</th>
+                <th>Genre</th>
+                <th>Is Active</th>
+                <th>Detail</th>
+            </tr>
+            {% for m in object_list %}
+            <tr>
+                <td style="width: 25%;">
+                    {% if m.image %}
+                        <img style="width: 50%;" src="{{ m.image.url }}" alt="{{ m.name }}">
+                    {% else %}
+                        <img style="width: 50%;" src="{% static 'images/default.jpg' %}" alt="No image available">
+                    {% endif %}
+                </td>
+                <td>{{ m.name }}</td>
+                <td>{{ m.time }}</td>
+                <td>{{ m.description }}</td>
+                <td>{{ m.zhanr }}</td>
+                <td>{{ m.is_active }}</td>
+                <td><a href="{% url 'detail_m' m.id %}">Get</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>

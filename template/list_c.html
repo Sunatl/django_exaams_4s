@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'main1.css' %}">
+</head>
+<body>
+
+    <div class="a1">
+        <h1>Cinema</h1>
+        <div class="base">
+            <a href="{% url 'base' %}"><h3 class="sas">Home</h3></a>
+            <a href="{% url 'create_c' %}"><h3 class="sas">Add</h3></a>
+        </div>
+    </div>
+
+    <div class="b1">
+        <table>
+            <caption><h3>Cinema</h3></caption>
+            <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Genre</th>
+                <th>Detail</th>
+            </tr>
+            {% for m in object_list %}
+            <tr>
+
+                <td>{{ m.name }}</td>
+                <td>{{ m.location }}</td>
+                <td>{{ m.genres }}</td>
+                <td><a href="{% url 'detail_c' m.id %}">Get</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>

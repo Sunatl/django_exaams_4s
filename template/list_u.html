@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'main1.css' %}">
+</head>
+<body>
+
+    <div class="a1">
+        <h1>User</h1>
+        <div class="base">
+        <a href="{% url 'base' %}"><h3 class="sas">Home</h3></a>
+        <a href="{% url 'create_u' %}"><h3 class="sas">Add</h3></a>
+    </div>
+    </div>
+
+
+<div class="b1">
+        <table>
+            <caption> <h3>User</h1> </caption>
+            <tr>
+                <th>Fullname</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Register date</th>
+                <th>Detail</th>
+
+            </tr>
+        {% for u in object_list %}
+        <tr>
+        <td>{{ u.fullname }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.phone_number }}</td>
+        <td>{{ u.register_date }}</td>
+        <td><a href="{% url 'detail_u' u.id %}">Get</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+        </div>
+<br><br><br>
+    </head>
+    <body>
